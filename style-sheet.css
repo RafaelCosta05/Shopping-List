@@ -107,6 +107,7 @@ body {
 .title span {
     color: var(--color-main);
 }
+<<<<<<< HEAD
 
 section {
     display: flex;
@@ -143,3 +144,5 @@ section {
     font-size: 2.5rem;
     color: var(--color-main);
 }
+=======
+>>>>>>> d4d1acfc566889095c7701423498eb454a946b68
