@@ -108,19 +108,21 @@ body {
     color: var(--color-main);
 }
 
-section {
+section.input-add {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-height: 30vh;
+    min-height: 9vh;
     padding-left: 9%;
     padding-right: 9%;
+    margin-top: 10rem;
 }
 
 .add-product {
-    width: 30%;
+    width: 80%;
     height: 4rem;
     border-radius: var(--border-radius-1);
+    box-shadow: var(--box-shadow);
 }
 
 .add-product::placeholder {
@@ -137,9 +139,27 @@ section {
     border-radius: var(--border-radius-2);
     background: var(--color-danger);
     padding: 1rem 1rem;
+    margin-left: auto;
+    box-shadow: var(--box-shadow);
 }
 
 .btn-add i {
     font-size: 2.5rem;
     color: var(--color-main);
+}
+
+hr {
+    background: var(--color-main);
+    height: 1px;
+    margin-left: 9%;
+    margin-right: 9%;
+}
+
+
+@media(max-width: 414px) {
+    .add-product {
+        width: 80%;
+        margin-top: 2rem;
+      }
+
 }
