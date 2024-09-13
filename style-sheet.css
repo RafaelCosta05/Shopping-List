@@ -123,6 +123,7 @@ section.input-add {
     height: 4rem;
     border-radius: var(--border-radius-1);
     box-shadow: var(--box-shadow);
+    padding-left: 10px;
 }
 
 .add-product::placeholder {
