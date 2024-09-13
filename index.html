@@ -22,15 +22,20 @@
     </header>
     <section class="input-add">
         <input type="text" placeholder="Nome do produto" class="add-product">
-            <div class="btn-add">
+            <button class="btn-add" onclick="addProduct()">
                 <i class='bx bx-cart-add'></i>
-            </div>
+            </button>
     </section>
+    <p class="message"></p>
     <hr>
-    <section class="list-products">
-        <p>Tem <span>0</span> produtos em falta de <span>0</span></p>
+    <section class="products">
+        <p>Tem <span class="products-missing">0</span> 
+            produtos em falta de 
+            <span class="total-products">0</span></p>
     </section>
-    
+
+    <div class="list-products"></div>
+
     <script src="script.js"></script>
 </body>
 </html>

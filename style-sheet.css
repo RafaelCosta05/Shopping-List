@@ -141,11 +141,21 @@ section.input-add {
     padding: 1rem 1rem;
     margin-left: auto;
     box-shadow: var(--box-shadow);
+    cursor: pointer;
 }
 
 .btn-add i {
     font-size: 2.5rem;
     color: var(--color-main);
+}
+
+.message {
+    display: none;
+    font-size: 1.7rem;
+    color: var(--color-dark);
+    margin-top: 2rem;
+    margin-left: 9%;
+    margin-right: 9%;
 }
 
 hr {
@@ -156,8 +166,8 @@ hr {
     margin-top: 2rem;
 }
 
-section.list-products{
-    display: flex;
+section.products{
+  display: flex;
   align-items: center;
   justify-content: space-between;
   min-height: 9vh;
@@ -165,15 +175,88 @@ section.list-products{
   padding-right: 9%;
 }
 
-.list-products p{
+.products p{
     font-size: 1.7rem;
     color: var(--color-dark);
+    margin-top: 2rem;
 }
 
-.list-products span {
+.products span {
     color: var(--color-danger);
 }
 
+.list-products {
+    padding-left: 9%;
+    padding-right: 9%;
+    display: flex;
+    flex-direction: column; /* Garante que cada produto fique em uma linha */
+    gap: 10px; /* Espaçamento entre os itens */
+}
+
+.produto {
+    margin-top: 3rem;
+    display: flex;
+    align-items: center;
+    height: 6rem;
+    font-size: 1.7rem;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius-1);
+}
+
+.verifica-tarefa {
+    appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--color-dark);
+    position: relative;
+    margin-left: 2rem;
+  }
+
+  .verifica-tarefa:checked {
+    background-color: var(--color-main);
+    border: var(--color-main);
+  }
+
+  .produto span {
+    margin-left: 2rem;
+    color: var(--color-dark);
+  }
+
+  .produto button {
+    display: flex;
+    justify-content: center;
+  }
+
+button.editar,
+button.remover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 5rem;
+    border-radius: var(--border-radius-1);
+    background: var(--color-danger);
+    padding: 1rem 1rem;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+}
+
+.editar {
+    margin-left: auto;
+}
+
+.remover {
+    margin-left: 0.4rem;
+    margin-right: 1.5rem
+}
+
+button.editar i,
+button.remover i {
+    font-size: 2rem;
+    color: var(--color-main);
+}
 
 @media(max-width: 414px) {
     .add-product {
