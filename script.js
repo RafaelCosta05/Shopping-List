@@ -48,15 +48,43 @@ function addProduct() {
     let valorTarefa = textNovaTarefa.value;
     let passouTarefa = false;
 
-    // Verifica se o input está vazio
-    if (valorTarefa === "") {
-        mensagem.innerHTML = `<i class="bx bx-error-circle error-message"></i> O produto não pode estar vazio`;
-        apresentaMensagem(2000);
-        return;
-    } else {
-        mensagem.innerHTML = `<i class="bx bx-check-circle success-message"></i> Produto '${valorTarefa}' adicionado com sucesso`;
-        apresentaMensagem(2000);
-        passouTarefa = true;
+    if (btnNovaTarefa.textContent.trim() == "Adicionar") {
+        // Verifica se o input está vazio
+        if (valorTarefa === "") {
+            mensagem.innerHTML = `<i class="bx bx-error-circle error-message"></i> O produto não pode estar vazio`;
+            apresentaMensagem(2000);
+            return;
+        } 
+        else {
+            mensagem.innerHTML = `<i class="bx bx-check-circle success-message"></i> Produto '${valorTarefa}' adicionado com sucesso`;
+            apresentaMensagem(2000);
+            passouTarefa = true;
+        }
+    }
+    else if(btnNovaTarefa.textContent.trim() == "Atualizar") {
+        if (valorTarefa === "") {
+            mensagem.innerHTML = `<i class="bx bx-error-circle error-message"></i> O produto não pode estar vazio`;
+            apresentaMensagem(2000);
+            textNovaTarefa.value = textTarefaEdit;
+            textNovaTarefa.focus();
+            return;
+        }     
+        else if(valorTarefa === textTarefaEdit) {
+            mensagem.innerHTML = `<i class="bx bx-check-circle success-message"></i> A tarefa foi reposta, não foram feitas alterações`;
+            apresentaMensagem(9000);
+            passouTarefa = true;
+            textTarefaEdit = "";
+        }
+        else
+        {
+            //APRESENTA MENSAGEM DE SUCESSO COM O VALOR DA TAREFA ANTERIOR E O VALOR ATUALIZADO
+            //OCULTA A MENSAGEM APÓS 3000ms
+            //HABILITA A INSERÇÃO DA TAREFA COM O passouTarefa E REINICIA O TEXTO A EDITAR
+            mensagem.innerHTML = `<i class="bi bi-check success-message"></i> Tarefa '${textTarefaEdit}' atualizada com sucesso para '${valorTarefa}'`;
+            apresentaMensagem(7000)
+            passouTarefa = true;
+            textTarefaEdit = "";
+        }
     }
 
     if (passouTarefa) {
@@ -119,7 +147,7 @@ function editarTarefa(button) {
         apagarTarefa(button);
         textNovaTarefa.value = valorAtual;
         textNovaTarefa.focus();
-        btnNovaTarefa.innerHTML = `<i class='bx bx-cart-add'></i>`;
+        btnNovaTarefa.innerHTML = `<span class="text-add">Atualizar</span> <i class='bx bx-refresh' ></i>`;
         mensagem.innerHTML = `<i class="bx bx-check-circle success-message"></i> Produto '${valorAtual}' em modo edição`;
         apresentaMensagem(4000);
         textTarefaEdit = valorAtual;

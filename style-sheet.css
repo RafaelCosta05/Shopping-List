@@ -123,6 +123,7 @@ section.input-add {
     height: 4rem;
     border-radius: var(--border-radius-1);
     box-shadow: var(--box-shadow);
+    padding-left: 10px;
 }
 
 .add-product::placeholder {
@@ -142,11 +143,16 @@ section.input-add {
     margin-left: auto;
     box-shadow: var(--box-shadow);
     cursor: pointer;
+    text-transform: none;
 }
 
 .btn-add i {
     font-size: 2.5rem;
     color: var(--color-dark);
+}
+
+.text-add {
+    display: none;
 }
 
 .message {
