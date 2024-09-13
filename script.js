@@ -30,50 +30,6 @@ if (themeToggler) {
     });
 }
 
-
-// //Adiconar produto
-// const btnNewProduct = document.querySelector('.btn-add');
-// const textNewProduct = document.querySelector('.add-product');
-// const listProducts = document.querySelector('.list-products');
-// const message = document.querySelector('.message');
-// const productsMissing = document.querySelector('.products-missing');
-// const totalProducts = document.querySelector('.total-products');
-// let textProductEdit = "";
-// let TotalProduct = 0;
-// let countMissingProducts = 0;
-
-// window.onload = function () {
-//     loadProducts();
-// }
-
-// function addProduct () {
-//     let valueProduct = textNewProduct.value;
-//     let passProduct = false;
-
-//     //MODE add
-//     if(btnNewProduct.textContent.trim() == "Add") {
-//         //Check if button have text
-//         if(valueProduct === "") {
-//             message.innerHTML = "<i class='bx bx-x'> Não pode adicionar um produto sem nome</i>";
-//             showMessage(2000);
-//             return;
-//         }
-//     }
-// }
-
-// function showMessage(time) {
-//     message.style.display="block";
-//     setTimeout(() => {message.style.display = "none"}, time);
-// }
-
-
-
-
-// function loadProducts() {
-
-// }
-
-
 const btnNovaTarefa = document.querySelector(".btn-add");
 const textNovaTarefa = document.querySelector(".add-product");
 const listaTarefas = document.querySelector('.list-products');
