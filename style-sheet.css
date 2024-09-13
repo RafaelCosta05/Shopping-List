@@ -107,13 +107,12 @@ body {
 .title span {
     color: var(--color-main);
 }
-<<<<<<< HEAD
 
 section {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-height: 50vh;
+    min-height: 30vh;
     padding-left: 9%;
     padding-right: 9%;
 }
@@ -144,5 +143,3 @@ section {
     font-size: 2.5rem;
     color: var(--color-main);
 }
-=======
->>>>>>> d4d1acfc566889095c7701423498eb454a946b68
