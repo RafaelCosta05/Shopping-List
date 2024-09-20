@@ -30,65 +30,72 @@ if (themeToggler) {
     });
 }
 
-const btnNovaTarefa = document.querySelector(".btn-add");
-const textNovaTarefa = document.querySelector(".add-product");
-const listaTarefas = document.querySelector('.list-products');
-const mensagem = document.querySelector(".message");
-const textContaTarefas = document.querySelector(".products-missing");
-const textTotalTarefas = document.querySelector(".total-products");
-let textTarefaEdit = "";
-let contadorTotal = 0;
-let contadorTarefas = 0;
+const btnNewProduct = document.querySelector(".btn-add");
+const textNewProduct = document.querySelector(".add-product");
+const listProducts = document.querySelector('.list-products');
+const message = document.querySelector(".message");
+const textCountProducts = document.querySelector(".products-missing");
+const textTotalProducts = document.querySelector(".total-products");
+let textProductEdit = "";
+let countTotal = 0;
+let countProducts = 0;
 
 window.onload = function () {
     carregaTarefasLocal();
 }
 
+//Função para adicionar produto 
 function addProduct() {
-    let valorTarefa = textNovaTarefa.value;
-    let passouTarefa = false;
+    let valueProduct = textNewProduct.value;
+    let addProduct = false;
 
-    if (btnNovaTarefa.textContent.trim() == "Adicionar") {
+    //verifica se está Adicionar ou a atualizar
+    if (btnNewProduct.textContent.trim() == "Adicionar") {
         // Verifica se o input está vazio
-        if (valorTarefa === "") {
-            mensagem.innerHTML = `<i class="bx bx-error-circle error-message"></i> O produto não pode estar vazio`;
-            apresentaMensagem(2000);
+        if (valueProduct === "") {
+            message.innerHTML = `<i class="bx bx-error-circle error-message"></i> O produto não pode estar vazio`;
+            apresentamessage(2000);
             return;
         } 
+        //senao estiver vazio
         else {
-            mensagem.innerHTML = `<i class="bx bx-check-circle success-message"></i> Produto '${valorTarefa}' adicionado com sucesso`;
-            apresentaMensagem(2000);
-            passouTarefa = true;
+            message.innerHTML = `<i class="bx bx-check-circle success-message"></i> Produto '${valueProduct}' adicionado com sucesso`;
+            apresentamessage(2000);
+            addProduct = true;
         }
     }
-    else if(btnNovaTarefa.textContent.trim() == "Atualizar") {
-        if (valorTarefa === "") {
-            mensagem.innerHTML = `<i class="bx bx-error-circle error-message"></i> O produto não pode estar vazio`;
-            apresentaMensagem(2000);
-            textNovaTarefa.value = textTarefaEdit;
-            textNovaTarefa.focus();
+    //se estiver a atualizar o nome do produto
+    else if(btnNewProduct.textContent.trim() == "Atualizar") {
+        //verifica se esta o campo está vazio
+        if (valueProduct === "") {
+            message.innerHTML = `<i class="bx bx-error-circle error-message"></i> O produto não pode estar vazio`;
+            apresentamessage(2000);
+            textNewProduct.value = textProductEdit;
+            textNewProduct.focus();
             return;
-        }     
-        else if(valorTarefa === textTarefaEdit) {
-            mensagem.innerHTML = `<i class="bx bx-check-circle success-message"></i> A tarefa foi reposta, não foram feitas alterações`;
-            apresentaMensagem(9000);
-            passouTarefa = true;
-            textTarefaEdit = "";
         }
+        //senao houver alterações   
+        else if(valueProduct === textProductEdit) {
+            message.innerHTML = `<i class="bx bx-check-circle success-message"></i> A tarefa foi reposta, não foram feitas alterações`;
+            apresentamessage(9000);
+            addProduct = true;
+            textProductEdit = "";
+        }
+        //se houver atualização do nome do produto
         else
         {
-            //APRESENTA MENSAGEM DE SUCESSO COM O VALOR DA TAREFA ANTERIOR E O VALOR ATUALIZADO
-            //OCULTA A MENSAGEM APÓS 3000ms
-            //HABILITA A INSERÇÃO DA TAREFA COM O passouTarefa E REINICIA O TEXTO A EDITAR
-            mensagem.innerHTML = `<i class="bi bi-check success-message"></i> Tarefa '${textTarefaEdit}' atualizada com sucesso para '${valorTarefa}'`;
-            apresentaMensagem(7000)
-            passouTarefa = true;
-            textTarefaEdit = "";
+            //APRESENTA message DE SUCESSO COM O VALOR DA TAREFA ANTERIOR E O VALOR ATUALIZADO
+            //OCULTA A message APÓS 3000ms
+            //HABILITA A INSERÇÃO DA TAREFA COM O addProduct E REINICIA O TEXTO A EDITAR
+            message.innerHTML = `<i class="bi bi-check success-message"></i> Tarefa '${textProductEdit}' atualizada com sucesso para '${valueProduct}'`;
+            apresentamessage(7000)
+            addProduct = true;
+            textProductEdit = "";
         }
     }
-
-    if (passouTarefa) {
-        passouTarefa = false;
+    //se o produto chegar ao else a flag passa a true e vai adicionar o produto a lista
+    if (addProduct) {
+        addProduct = false;
 
         // Cria um novo div para o produto
         let div = document.createElement('div');
@@ -97,7 +104,7 @@ function addProduct() {
         // Adiciona o conteúdo do produto dentro da div
         div.innerHTML = `
         <input type="checkbox" class="verifica-tarefa" onclick="verificaEstado(this)" />
-        <span class="valor-tarefa">${valorTarefa}</span>
+        <span class="valor-tarefa">${valueProduct}</span>
         <button class="editar" onclick="editarTarefa(this)">
             <i class='bx bx-edit-alt'></i>
         </button>
@@ -106,13 +113,13 @@ function addProduct() {
         </button>
         `;
 
-        // Adiciona o produto à lista de tarefas
-        listaTarefas.append(div);
-        contadorTarefas++;
-        contadorTotal++;
-        textTotalTarefas.innerText = contadorTotal;
-        textContaTarefas.innerText = contadorTarefas;
-        textNovaTarefa.value = "";
+        // Adiciona o produto à lista de produtos
+        listProducts.append(div);
+        countProducts++;
+        countTotal++;
+        textTotalProducts.innerText = countTotal;
+        textCountProducts.innerText = countProducts;
+        textNewProduct.value = "";
 
         // Salva as tarefas localmente
         guardarTarefas();
@@ -124,17 +131,22 @@ function apagarTarefa(button) {
     const spanTarefa = tarefa.querySelector('.valor-tarefa');
     let valorAtual = spanTarefa.textContent;
 
+    //se estiver comprado vai retirar ao produtos em falta
+    //SENAO vai aparecer na mesma que falta
     if (!spanTarefa.classList.contains('completed')) {
-        contadorTarefas--;
+        countProducts--;
     }
 
-    listaTarefas.removeChild(tarefa);
-    contadorTotal--;
-    textTotalTarefas.innerText = contadorTotal;
-    textContaTarefas.innerText = contadorTarefas;
-    mensagem.innerHTML = `<i class="bx bx-check-circle success-message"></i> Produto '${valorAtual}' removido com sucesso`;
-    apresentaMensagem(2000);
+    //remove o produto da lista e atualiza produtos em falta e
+    //total de produtos da lista
+    listProducts.removeChild(tarefa);
+    countTotal--;
+    textTotalProducts.innerText = countTotal;
+    textCountProducts.innerText = countProducts;
+    message.innerHTML = `<i class="bx bx-check-circle success-message"></i> Produto '${valorAtual}' removido com sucesso`;
+    apresentamessage(2000);
 
+    //atualiza localmente os dados
     guardarTarefas();
 }
 
@@ -143,47 +155,59 @@ function editarTarefa(button) {
     const spanTarefa = tarefa.querySelector('.valor-tarefa');
     let valorAtual = spanTarefa.textContent;
 
-    if (textTarefaEdit === "") {
+    //verifica se o input enquanto esta em modo de editar está vazio
+    if (textProductEdit === "") {
         apagarTarefa(button);
-        textNovaTarefa.value = valorAtual;
-        textNovaTarefa.focus();
-        btnNovaTarefa.innerHTML = `<span class="text-add">Atualizar</span> <i class='bx bx-refresh' ></i>`;
-        mensagem.innerHTML = `<i class="bx bx-check-circle success-message"></i> Produto '${valorAtual}' em modo edição`;
-        apresentaMensagem(4000);
-        textTarefaEdit = valorAtual;
-    } else {
-        mensagem.innerHTML = `<i class="bx bx-error-circle error-message"></i> Produto '${textTarefaEdit}' em modo edição, não pode editar outro produto`;
-        apresentaMensagem(5000);
+        textNewProduct.value = valorAtual;
+        textNewProduct.focus();
+        btnNewProduct.innerHTML = `<span class="text-add">Atualizar</span> <i class='bx bx-refresh' ></i>`;
+        message.innerHTML = `<i class="bx bx-check-circle success-message"></i> Produto '${valorAtual}' em modo edição`;
+        apresentamessage(4000);
+        textProductEdit = valorAtual;
+    } 
+    //senao estiver devolve uma mensagem 
+    else {
+        message.innerHTML = `<i class="bx bx-error-circle error-message"></i> Produto '${textProductEdit}' em modo edição, não pode editar outro produto`;
+        apresentamessage(5000);
     }
 }
 
+//função para mudar o estado do produto (comprado ou em falta)
 function verificaEstado(checkbox) {
     const tarefa = checkbox.parentElement;
     const spanTarefa = tarefa.querySelector('.valor-tarefa');
 
     if (checkbox.checked) {
+        //se estiver comprado, adiciona a class completed e
+        //atualiza contador produtos em falta
         spanTarefa.classList.add('completed');
-        contadorTarefas--;
+        countProducts--;
     } else {
+        //caso contrário elimina o completed e atualiza contador produtos em falta
         spanTarefa.classList.remove('completed');
-        contadorTarefas++;
+        countProducts++;
     }
 
-    textContaTarefas.innerText = contadorTarefas;
+    //atualiza a label dos produtos em falta e atualiza localemente
+    textCountProducts.innerText = countProducts;
     guardarTarefas();
 }
 
-function apresentaMensagem(tempo) {
-    mensagem.style.display = "block";
+//função para apresentar mensagens
+function apresentamessage(tempo) {
+    //apresenta a imagem mudando o display para block pois estava como none
+    message.style.display = "block";
+    //apos o settime volta ao display none
     setTimeout(() => {
-        mensagem.style.display = "none";
+        message.style.display = "none";
     }, tempo);
 }
 
+//funcao para guardar no localstorage a lista de produtos
 function guardarTarefas() {
     const todasTarefas = [];
 
-    listaTarefas.querySelectorAll('.produto').forEach(tarefa => {
+    listProducts.querySelectorAll('.produto').forEach(tarefa => {
         let textoTarefa = tarefa.querySelector('.valor-tarefa').textContent;
         let tarefaConcluida = tarefa.querySelector('.valor-tarefa').classList.contains('completed');
         todasTarefas.push({ texto_tarefa: textoTarefa, tarefa_feita: tarefaConcluida });
@@ -192,9 +216,10 @@ function guardarTarefas() {
     localStorage.setItem('lista-tarefas', JSON.stringify(todasTarefas));
 }
 
+//carrefao local storage
 function carregaTarefasLocal() {
-    textContaTarefas.textContent = contadorTarefas;
-    textTotalTarefas.textContent = contadorTotal;
+    textCountProducts.textContent = countProducts;
+    textTotalProducts.textContent = countTotal;
 
     const tarefasEmStorage = localStorage.getItem('lista-tarefas');
 
@@ -219,14 +244,14 @@ function carregaTarefasLocal() {
             </button>
             `;
 
-            listaTarefas.append(div);
-            contadorTotal++;
+            listProducts.append(div);
+            countTotal++;
             if (!tarefaCheck) {
-                contadorTarefas++;
+                countProducts++;
             }
         });
 
-        textTotalTarefas.innerText = contadorTotal;
-        textContaTarefas.innerText = contadorTarefas;
+        textTotalProducts.innerText = countTotal;
+        textCountProducts.innerText = countProducts;
     }
 }
