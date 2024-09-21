@@ -161,7 +161,7 @@ section.input-add {
     border-radius: var(--border-radius-2);
     background: var(--color-main);
     padding: 1rem 1rem;
-    margin-left: auto;
+    margin-left: 2rem;
     box-shadow: var(--box-shadow);
     cursor: pointer;
     text-transform: none;
@@ -291,11 +291,15 @@ button.remover i {
 
 @media(max-width: 414px) {
     .add-product {
-        width: 80%;
+        width: 65%;
         margin-top: 2rem;
       }
 
       .btn-add {
+        margin-top: 2rem;
+      }
+
+      .btn-deleteAll {
         margin-top: 2rem;
       }
 }
