@@ -151,6 +151,27 @@ section.input-add {
     color: var(--color-dark);
 }
 
+.btn-deleteAll {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    font-size: 5rem;
+    border-radius: var(--border-radius-2);
+    background: var(--color-main);
+    padding: 1rem 1rem;
+    margin-left: auto;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    text-transform: none;
+}
+
+.btn-deleteAll i {
+    font-size: 2.5rem;
+    color: var(--color-dark);
+}
+
 .text-add {
     display: none;
 }
