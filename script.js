@@ -182,7 +182,7 @@ function deleteAll() {
         message.innerHTML = `<i class="bx bx-check-circle success-message"></i> Não há produtos para remover.`;
     }
 
-    apresentamessage(2000);
+    apresentamessage(3000);
 
     // Atualiza os dados localmente
     guardarTarefas();
