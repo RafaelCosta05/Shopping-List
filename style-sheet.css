@@ -289,7 +289,7 @@ button.remover i {
     color: var(--color-dark);
 }
 
-@media(max-width: 428px) {
+@media(max-width: 430px) {
     .add-product {
         width: 65%;
         margin-top: 2rem;
