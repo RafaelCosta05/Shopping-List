@@ -290,6 +290,7 @@ button.remover i {
 }
 
 section.alert {
+    width: 40%;
     position: absolute;
     display: none;
     align-items: center;
@@ -317,7 +318,7 @@ section.alert {
     margin-top: 1.1rem;
     cursor: pointer;
     position: fixed;
-    left: 81%;
+    left: 70%;
 }
 
 .card p {
@@ -386,6 +387,10 @@ section.alert {
 
     .card p {
         padding: 4rem 0 0 0;
+    }
+
+    .card span {
+        left: 81%;
     }
 
     .card .alert-btn-yes {
