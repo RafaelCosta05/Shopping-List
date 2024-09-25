@@ -37,6 +37,7 @@ const listProducts = document.querySelector('.list-products');
 const message = document.querySelector(".message");
 const textCountProducts = document.querySelector(".products-missing");
 const textTotalProducts = document.querySelector(".total-products");
+const alert = document.querySelector('.alert');
 let textProductEdit = "";
 let countTotal = 0;
 let countProducts = 0;
@@ -151,6 +152,23 @@ function apagarTarefa(button) {
     guardarTarefas();
 }
 
+function alertMessage() {
+    // if (alert.style.display = "none")
+    // {
+    //     alert.style.display = "flex";
+    // }
+    // else if (alert.style.display = "flex")
+    // {
+    //     alert.style.display = "none";
+    // }
+
+    alert.style.display = "flex";
+}
+
+function closeAlert() {
+    alert.style.display = "none";
+}
+
 function deleteAll() {
     const tarefas = document.querySelectorAll('.produto'); // Seleciona todas as tarefas/produtos
     let produtosRemovidos = [];
@@ -165,7 +183,7 @@ function deleteAll() {
         }
 
         // Adiciona o produto removido à lista para exibir a mensagem posteriormente
-        produtosRemovidos.push(valorAtual);
+        produtosRemovidos++;
 
         // Remove o produto da lista
         listProducts.removeChild(tarefa);
@@ -176,17 +194,60 @@ function deleteAll() {
     textTotalProducts.innerText = countTotal;
     textCountProducts.innerText = countProducts;
 
-    if (produtosRemovidos.length > 0) {
+    if (produtosRemovidos > 0) {
         message.innerHTML = `<i class="bx bx-check-circle success-message"></i> Todos os produtos foram removidos com sucesso`;
     } else {
         message.innerHTML = `<i class="bx bx-check-circle success-message"></i> Não há produtos para remover.`;
     }
 
+    alert.style.display = "none";
     apresentamessage(3000);
 
     // Atualiza os dados localmente
     guardarTarefas();
 }
+
+function deleteAllChecked() {
+    const tarefas = document.querySelectorAll('.produto'); // Seleciona todas as tarefas/produtos
+    let produtosRemovidos = [];
+
+    tarefas.forEach(tarefa => {
+        const checkbox = tarefa.querySelector('input[type="checkbox"]');
+        const spanTarefa = tarefa.querySelector('.valor-tarefa');
+
+        // Verifica se o checkbox está marcado
+        if (checkbox.checked) {
+            // Se o produto não estiver marcado como completo, diminui a contagem de produtos em falta
+            if (!spanTarefa.classList.contains('completed')) {
+                countProducts--;
+            }
+
+            // Adiciona o produto removido à lista para exibir a mensagem posteriormente
+            produtosRemovidos++;
+
+            // Remove o produto da lista
+            listProducts.removeChild(tarefa);
+        }
+    });
+
+    // Atualiza o total de produtos
+    countTotal -= produtosRemovidos;
+    textTotalProducts.innerText = countTotal;
+    textCountProducts.innerText = countProducts;
+
+    if (produtosRemovidos > 0) {
+        message.innerHTML = `<i class="bx bx-check-circle success-message"></i> Todos os produtos selecionados foram removidos com sucesso`;
+    } else {
+        message.innerHTML = `<i class="bx bx-check-circle success-message"></i> Não há produtos selecionados para remover.`;
+    }
+
+    alert.style.display = "none";
+    apresentamessage(3000);
+
+    // Atualiza os dados localmente
+    guardarTarefas();
+}
+
 
 function editarTarefa(button) {
     const tarefa = button.parentElement;

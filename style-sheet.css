@@ -289,19 +289,115 @@ button.remover i {
     color: var(--color-dark);
 }
 
-@media(max-width: 428px) {
+section.alert {
+    position: absolute;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 9vh;
+    padding-left: 9%;
+    padding-right: 9%;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card {
+    color: var(--color-background);
+    background: var(--color-dark);
+    border-radius: var(--border-radius-2);
+    box-shadow: var(--box-shadow);
+    min-height: 9vh;
+    width: 100%;
+    text-align: center;
+}
+
+.card p {
+    font-size: 1.6rem;
+    padding: 2rem 2rem 0 2rem;
+}
+
+.card .buttons {
+    margin-top: 1.6rem;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 2rem;
+}
+
+.card .alert-btn-yes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6rem;
+    height: 3.4rem;
+    font-size: 1.5rem;
+    border-radius: var(--border-radius-2);
+    background: var(--color-main);
+    color: var(--color-dark);
+    padding: 1rem 1rem;
+    cursor: pointer;
+    margin-right: 1rem;
+}
+
+.card .alert-btn-no {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6rem;
+    height: 3.4rem;
+    font-size: 1.5rem;
+    border-radius: var(--border-radius-2);
+    background: var(--color-main);
+    color: var(--color-dark);
+    padding: 1rem 1rem;
+    cursor: pointer;
+    margin-right: 1rem;
+}
+
+.alert-btn-checked {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4.5em;
+    height: 3.4rem;
+    font-size: 1.5rem;
+    border-radius: var(--border-radius-2);
+    background: var(--color-main);
+    color: var(--color-dark);
+    padding: 1rem 1rem;
+    cursor: pointer;
+}
+
+@media(max-width: 430px) {
     .add-product {
         width: 65%;
         margin-top: 2rem;
-      }
+    }
 
-      .btn-add {
+    .btn-add {
         margin-top: 2rem;
-      }
+    }
 
-      .btn-deleteAll {
+    .btn-deleteAll {
         margin-top: 2rem;
-      }
+    }
+
+    section.alert {
+        top: 37%;
+    }
+
+    .card {
+        padding: 0 4rem 0 4rem;
+    }
+
+    .card .alert-btn-yes {
+        margin-right: 2rem;
+    }
+
+    .card .alert-btn-no {
+        margin-right: 2rem;
+    }
 }
 
 @media(max-width: 414px) {

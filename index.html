@@ -26,7 +26,7 @@
                 <i class='bx bx-cart-add'></i>
                 <span class="text-add">Adicionar</span>
             </button>
-            <button class="btn-deleteAll" onclick="deleteAll()">
+            <button class="btn-deleteAll" onclick="alertMessage()">
                 <i class='bx bx-trash'></i>
                 <span class="text-add">Adicionar</span>
             </button>
@@ -38,6 +38,18 @@
             produtos em falta de 
             <span class="total-products">0</span></p>
     </section>
+
+    <section class="alert">
+        <div class="card">
+            <p>Eliminar todos os produtos?</p>
+            <div class="buttons">
+                <button class="alert-btn-yes" onclick="deleteAll()">Sim</button>
+                <button class="alert-btn-no" onclick="closeAlert()">Não</button>
+                <button class="alert-btn-checked" onclick="deleteAllChecked()">Feitos</button>
+            </div>
+        </div>
+    </section>
+
 
     <div class="list-products"></div>
 
