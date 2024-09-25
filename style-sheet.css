@@ -340,7 +340,7 @@ section.alert {
     width: 6rem;
     height: 3.4rem;
     font-size: 1.5rem;
-    border-radius: var(--border-radius-2);
+    border-radius: var(--border-radius-1);
     background: var(--color-main);
     color: var(--color-dark);
     padding: 1rem 1rem;
@@ -355,7 +355,7 @@ section.alert {
     width: 11rem;
     height: 3.4rem;
     font-size: 1.5rem;
-    border-radius: var(--border-radius-2);
+    border-radius: var(--border-radius-1);
     background: var(--color-main);
     color: var(--color-dark);
     padding: 1rem 1rem;
