@@ -41,11 +41,12 @@
 
     <section class="alert">
         <div class="card">
-            <p>Eliminar todos os produtos?</p>
+            <span class="material-icons-sharp" 
+                onclick="closeAlert()">close</span>           
+                <p>Eliminar todos os produtos?</p>      
             <div class="buttons">
                 <button class="alert-btn-yes" onclick="deleteAll()">Sim</button>
-                <button class="alert-btn-no" onclick="closeAlert()">Não</button>
-                <button class="alert-btn-checked" onclick="deleteAllChecked()">Feitos</button>
+                <button class="alert-btn-checked" onclick="deleteAllChecked()">Comprados</button>
             </div>
         </div>
     </section>

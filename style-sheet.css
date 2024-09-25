@@ -313,6 +313,13 @@ section.alert {
     text-align: center;
 }
 
+.card span {
+    margin-top: 1.1rem;
+    cursor: pointer;
+    position: fixed;
+    left: 81%;
+}
+
 .card p {
     font-size: 1.6rem;
     padding: 2rem 2rem 0 2rem;
@@ -340,26 +347,11 @@ section.alert {
     margin-right: 1rem;
 }
 
-.card .alert-btn-no {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 6rem;
-    height: 3.4rem;
-    font-size: 1.5rem;
-    border-radius: var(--border-radius-2);
-    background: var(--color-main);
-    color: var(--color-dark);
-    padding: 1rem 1rem;
-    cursor: pointer;
-    margin-right: 1rem;
-}
-
 .alert-btn-checked {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 4.5em;
+    width: 11rem;
     height: 3.4rem;
     font-size: 1.5rem;
     border-radius: var(--border-radius-2);
@@ -385,10 +377,15 @@ section.alert {
 
     section.alert {
         top: 45%;
+        width: 100%;
     }
 
     .card {
         padding: 0 4rem 0 4rem;
+    }
+
+    .card p {
+        padding: 4rem 0 0 0;
     }
 
     .card .alert-btn-yes {
