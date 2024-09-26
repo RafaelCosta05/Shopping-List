@@ -131,7 +131,7 @@ function addProduct() {
         <input type="checkbox" class="verifica-tarefa" onclick="verificaEstado(this)" />
         <span class="valor-tarefa">${valueProduct}</span>
         <button class="editar" onclick="editarTarefa(this)">
-            <i class='bx bx-edit-alt'></i>
+            <i class='bx bx-pencil'></i>
         </button>
         <button class="remover" onclick="apagarTarefa(this)">
             <i class='bx bx-trash'></i>
