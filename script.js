@@ -38,12 +38,19 @@ const message = document.querySelector(".message");
 const textCountProducts = document.querySelector(".products-missing");
 const textTotalProducts = document.querySelector(".total-products");
 const alert = document.querySelector('.alert');
+const product = document.querySelectorAll('.produto');
 let textProductEdit = "";
 let countTotal = 0;
 let countProducts = 0;
 
 window.onload = function () {
     carregaTarefasLocal();
+}
+
+function checkProducts() {
+    if(product.length > 0) {
+        btnDeleteAll.style.display = "flex";
+    }
 }
 
 //Função para adicionar produto 
@@ -153,15 +160,6 @@ function apagarTarefa(button) {
 }
 
 function alertMessage() {
-    // if (alert.style.display = "none")
-    // {
-    //     alert.style.display = "flex";
-    // }
-    // else if (alert.style.display = "flex")
-    // {
-    //     alert.style.display = "none";
-    // }
-
     alert.style.display = "flex";
 }
 

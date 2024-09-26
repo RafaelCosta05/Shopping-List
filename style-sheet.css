@@ -240,9 +240,26 @@ section.products{
     margin-left: 2rem;
   }
 
+  .verifica-tarefa::before {
+    content: "";
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+  }
+
   .verifica-tarefa:checked {
     background-color: var(--color-main);
     border: var(--color-main);
+  }
+
+  .verifica-tarefa:checked::before {
+    position: absolute;
+    content: "\f00c";
+    color: white;
+    font-size: 0.6em;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
   }
 
   .completed {
@@ -377,7 +394,7 @@ section.alert {
     }
 
     section.alert {
-        top: 45%;
+        top: 50%;
         width: 100%;
     }
 
