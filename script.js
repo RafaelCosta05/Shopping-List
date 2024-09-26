@@ -31,6 +31,7 @@ if (themeToggler) {
 }
 
 const btnNewProduct = document.querySelector(".btn-add");
+const textAdd = document.querySelector(".text-add");
 const btnDeleteAll =  document.querySelector(".btn-deleteAll");
 const textNewProduct = document.querySelector(".add-product");
 const listProducts = document.querySelector('.list-products');
@@ -47,16 +48,22 @@ window.onload = function () {
     carregaTarefasLocal();
 }
 
-function checkProducts() {
-    if(product.length > 0) {
-        btnDeleteAll.style.display = "flex";
-    }
-}
+// function checkProducts() {    
+//     if(product.length != 0) {
+//         btnDeleteAll.style.display = "flex";
+//     }
+//     else
+//     {
+//         btnDeleteAll.style.display = "none";
+//     }
+//     console.log(product.length);
+// }
 
 //Função para adicionar produto 
 function addProduct() {
     let valueProduct = textNewProduct.value;
     let addProduct = false;
+    let btnAdd = document.querySelector('.text-add')
 
     //verifica se está Adicionar ou a atualizar
     if (btnNewProduct.textContent.trim() == "Adicionar") {
@@ -85,7 +92,8 @@ function addProduct() {
         }
         //senao houver alterações   
         else if(valueProduct === textProductEdit) {
-            message.innerHTML = `<i class="bx bx-check-circle success-message"></i> A tarefa foi reposta, não foram feitas alterações`;
+            message.innerHTML = `<i class="bx bx-check-circle success-message"></i> Não foram feitas alterações`;
+            btnNewProduct.innerHTML = `<span class="text-add">Adicionar</span> <i class='bx bx-cart-add' ></i>`;
             apresentamessage(9000);
             addProduct = true;
             textProductEdit = "";
@@ -96,7 +104,8 @@ function addProduct() {
             //APRESENTA message DE SUCESSO COM O VALOR DA TAREFA ANTERIOR E O VALOR ATUALIZADO
             //OCULTA A message APÓS 3000ms
             //HABILITA A INSERÇÃO DA TAREFA COM O addProduct E REINICIA O TEXTO A EDITAR
-            message.innerHTML = `<i class="bi bi-check success-message"></i> Tarefa '${textProductEdit}' atualizada com sucesso para '${valueProduct}'`;
+            btnNewProduct.innerHTML = `<span class="text-add">Adicionar</span> <i class='bx bx-cart-add' ></i>`;
+            message.innerHTML = `<i class="bi bi-check success-message"></i> Produto '${textProductEdit}' atualizada com sucesso para '${valueProduct}'`;
             apresentamessage(7000)
             addProduct = true;
             textProductEdit = "";
@@ -315,6 +324,7 @@ function guardarTarefas() {
 
 //carrefao local storage
 function carregaTarefasLocal() {
+
     textCountProducts.textContent = countProducts;
     textTotalProducts.textContent = countTotal;
 
