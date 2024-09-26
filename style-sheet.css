@@ -254,10 +254,12 @@ section.products{
   }
 
   .verifica-tarefa:checked::before {
+    align-items: center;
     position: absolute;
+    align-items: center;
     content: "\f00c";
-    color: white;
-    font-size: 0.6em;
+    color: var(--color-dark);
+    font-size: 1.2rem;   
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
   }
