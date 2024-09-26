@@ -119,11 +119,13 @@ section.input-add {
 }
 
 .add-product {
-    width: 80%;
+    width: 83%;
     height: 4rem;
     border-radius: var(--border-radius-1);
     box-shadow: var(--box-shadow);
     padding-left: 10px;
+    transition: all ease 200ms;
+    /* transition-delay: 400ms; */
 }
 
 .add-product::placeholder {
@@ -144,6 +146,7 @@ section.input-add {
     box-shadow: var(--box-shadow);
     cursor: pointer;
     text-transform: none;
+    transition: all ease 200ms;
 }
 
 .btn-add i {
@@ -152,7 +155,7 @@ section.input-add {
 }
 
 .btn-deleteAll {
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     width: 4rem;
@@ -165,6 +168,7 @@ section.input-add {
     box-shadow: var(--box-shadow);
     cursor: pointer;
     text-transform: none;
+    transition: all ease 200ms;
 }
 
 .btn-deleteAll i {
@@ -383,7 +387,7 @@ section.alert {
 
 @media(max-width: 430px) {
     .add-product {
-        width: 65%;
+        /* width: 65%; */
         margin-top: 2rem;
     }
 

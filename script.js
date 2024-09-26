@@ -31,7 +31,6 @@ if (themeToggler) {
 }
 
 const btnNewProduct = document.querySelector(".btn-add");
-const textAdd = document.querySelector(".text-add");
 const btnDeleteAll =  document.querySelector(".btn-deleteAll");
 const textNewProduct = document.querySelector(".add-product");
 const listProducts = document.querySelector('.list-products');
@@ -48,16 +47,24 @@ window.onload = function () {
     carregaTarefasLocal();
 }
 
-// function checkProducts() {    
-//     if(product.length != 0) {
-//         btnDeleteAll.style.display = "flex";
-//     }
-//     else
-//     {
-//         btnDeleteAll.style.display = "none";
-//     }
-//     console.log(product.length);
-// }
+function checkProducts() {    
+    if(contarProdutos() != 0) {
+        textNewProduct.style.width = "65%";
+        btnDeleteAll.style.display = "flex";
+    }
+    else
+    {
+        btnDeleteAll.style.display = "none";
+        textNewProduct.style.width = "83%";
+    }
+}
+
+function contarProdutos() {
+    // Seleciona todas as divs com a classe 'produto'
+    const produtos = document.querySelectorAll('div.produto');
+    // Retorna a quantidade de divs encontradas
+    return produtos.length;
+}
 
 //Função para adicionar produto 
 function addProduct() {
@@ -131,6 +138,7 @@ function addProduct() {
         </button>
         `;
 
+        checkProducts();
         // Adiciona o produto à lista de produtos
         listProducts.append(div);
         countProducts++;
@@ -138,7 +146,7 @@ function addProduct() {
         textTotalProducts.innerText = countTotal;
         textCountProducts.innerText = countProducts;
         textNewProduct.value = "";
-
+        contarProdutos();
         // Salva as tarefas localmente
         guardarTarefas();
     }
@@ -312,6 +320,7 @@ function apresentamessage(tempo) {
 //funcao para guardar no localstorage a lista de produtos
 function guardarTarefas() {
     const todasTarefas = [];
+    checkProducts();
 
     listProducts.querySelectorAll('.produto').forEach(tarefa => {
         let textoTarefa = tarefa.querySelector('.valor-tarefa').textContent;
@@ -353,6 +362,8 @@ function carregaTarefasLocal() {
 
             listProducts.append(div);
             countTotal++;
+            contarProdutos();
+            checkProducts();
             if (!tarefaCheck) {
                 countProducts++;
             }
