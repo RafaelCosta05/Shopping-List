@@ -124,8 +124,6 @@ section.input-add {
     border-radius: var(--border-radius-1);
     box-shadow: var(--box-shadow);
     padding-left: 10px;
-    transition: all ease 200ms;
-    /* transition-delay: 400ms; */
 }
 
 .add-product::placeholder {
@@ -146,7 +144,6 @@ section.input-add {
     box-shadow: var(--box-shadow);
     cursor: pointer;
     text-transform: none;
-    transition: all ease 200ms;
 }
 
 .btn-add i {
@@ -168,7 +165,6 @@ section.input-add {
     box-shadow: var(--box-shadow);
     cursor: pointer;
     text-transform: none;
-    transition: all ease 200ms;
 }
 
 .btn-deleteAll i {
