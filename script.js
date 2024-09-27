@@ -154,7 +154,7 @@ function addProduct() {
 function apagarTarefa(button) {
     const product = button.parentElement;
     const spanProduct = product.querySelector('.valor-tarefa');
-    let valorAtual = spanTarefa.textContent;
+    let valorAtual = spanProduct.textContent;
 
     //se estiver comprado vai retirar ao produtos em falta
     //SENAO vai aparecer na mesma que falta
