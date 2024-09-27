@@ -353,7 +353,7 @@ function carregaTarefasLocal() {
             <input type="checkbox" class="verifica-tarefa" ${tarefaCheck} onclick="verificaEstado(this)" />
             <span class="valor-tarefa ${tarefaCompleta}">${item.texto_tarefa}</span>
             <button class="editar" onclick="editarTarefa(this)">
-                <i class='bx bx-edit'></i>
+                <i class='bx bx-pencil'></i>
             </button>
             <button class="remover" onclick="apagarTarefa(this)">
                 <i class='bx bx-trash'></i>
