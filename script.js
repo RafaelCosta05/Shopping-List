@@ -38,7 +38,6 @@ const message = document.querySelector(".message");
 const textCountProducts = document.querySelector(".products-missing");
 const textTotalProducts = document.querySelector(".total-products");
 const alert = document.querySelector('.alert');
-const product = document.querySelectorAll('.produto');
 let textProductEdit = "";
 let countTotal = 0;
 let countProducts = 0;
@@ -128,7 +127,7 @@ function addProduct() {
 
         // Adiciona o conteúdo do produto dentro da div
         div.innerHTML = `
-        <input type="checkbox" class="verifica-tarefa" onclick="verificaEstado(this)" />
+        <input type="checkbox" class="check-product" onclick="verificaEstado(this)" />
         <span class="valor-tarefa">${valueProduct}</span>
         <button class="editar" onclick="editarTarefa(this)">
             <i class='bx bx-pencil'></i>
@@ -153,19 +152,19 @@ function addProduct() {
 }
 
 function apagarTarefa(button) {
-    const tarefa = button.parentElement;
-    const spanTarefa = tarefa.querySelector('.valor-tarefa');
+    const product = button.parentElement;
+    const spanProduct = product.querySelector('.valor-tarefa');
     let valorAtual = spanTarefa.textContent;
 
     //se estiver comprado vai retirar ao produtos em falta
     //SENAO vai aparecer na mesma que falta
-    if (!spanTarefa.classList.contains('completed')) {
+    if (!spanProduct.classList.contains('completed')) {
         countProducts--;
     }
 
     //remove o produto da lista e atualiza produtos em falta e
     //total de produtos da lista
-    listProducts.removeChild(tarefa);
+    listProducts.removeChild(product);
     countTotal--;
     textTotalProducts.innerText = countTotal;
     textCountProducts.innerText = countProducts;
@@ -185,15 +184,15 @@ function closeAlert() {
 }
 
 function deleteAll() {
-    const tarefas = document.querySelectorAll('.produto'); // Seleciona todas as tarefas/produtos
+    const products = document.querySelectorAll('.produto'); // Seleciona todas as tarefas/produtos
     let produtosRemovidos = [];
 
-    tarefas.forEach(tarefa => {
-        const spanTarefa = tarefa.querySelector('.valor-tarefa');
-        let valorAtual = spanTarefa.textContent;
+    products.forEach(product => {
+        const spanProduct = product.querySelector('.valor-tarefa');
+        let valorAtual = spanProduct.textContent;
 
         // Se o produto não estiver marcado como completo, diminui a contagem de produtos em falta
-        if (!spanTarefa.classList.contains('completed')) {
+        if (!spanProduct.classList.contains('completed')) {
             countProducts--;
         }
 
@@ -223,17 +222,17 @@ function deleteAll() {
 }
 
 function deleteAllChecked() {
-    const tarefas = document.querySelectorAll('.produto'); // Seleciona todas as tarefas/produtos
+    const products = document.querySelectorAll('.produto'); // Seleciona todas as tarefas/produtos
     let produtosRemovidos = [];
 
-    tarefas.forEach(tarefa => {
-        const checkbox = tarefa.querySelector('input[type="checkbox"]');
-        const spanTarefa = tarefa.querySelector('.valor-tarefa');
+    products.forEach(product => {
+        const checkbox = product.querySelector('input[type="checkbox"]');
+        const spanProduct = product.querySelector('.valor-tarefa');
 
         // Verifica se o checkbox está marcado
         if (checkbox.checked) {
             // Se o produto não estiver marcado como completo, diminui a contagem de produtos em falta
-            if (!spanTarefa.classList.contains('completed')) {
+            if (!spanProduct.classList.contains('completed')) {
                 countProducts--;
             }
 
@@ -241,7 +240,7 @@ function deleteAllChecked() {
             produtosRemovidos++;
 
             // Remove o produto da lista
-            listProducts.removeChild(tarefa);
+            listProducts.removeChild(product);
         }
     });
 
@@ -265,9 +264,9 @@ function deleteAllChecked() {
 
 
 function editarTarefa(button) {
-    const tarefa = button.parentElement;
-    const spanTarefa = tarefa.querySelector('.valor-tarefa');
-    let valorAtual = spanTarefa.textContent;
+    const product = button.parentElement;
+    const spanProduct = product.querySelector('.valor-tarefa');
+    let valorAtual = spanProduct.textContent;
 
     //verifica se o input enquanto esta em modo de editar está vazio
     if (textProductEdit === "") {
@@ -288,17 +287,17 @@ function editarTarefa(button) {
 
 //função para mudar o estado do produto (comprado ou em falta)
 function verificaEstado(checkbox) {
-    const tarefa = checkbox.parentElement;
-    const spanTarefa = tarefa.querySelector('.valor-tarefa');
+    const product = checkbox.parentElement;
+    const spanProduct = product.querySelector('.valor-tarefa');
 
     if (checkbox.checked) {
         //se estiver comprado, adiciona a class completed e
         //atualiza contador produtos em falta
-        spanTarefa.classList.add('completed');
+        spanProduct.classList.add('completed');
         countProducts--;
     } else {
         //caso contrário elimina o completed e atualiza contador produtos em falta
-        spanTarefa.classList.remove('completed');
+        spanProduct.classList.remove('completed');
         countProducts++;
     }
 
@@ -319,16 +318,16 @@ function apresentamessage(tempo) {
 
 //funcao para guardar no localstorage a lista de produtos
 function guardarTarefas() {
-    const todasTarefas = [];
+    const allProducts = [];
     checkProducts();
 
     listProducts.querySelectorAll('.produto').forEach(tarefa => {
         let textoTarefa = tarefa.querySelector('.valor-tarefa').textContent;
         let tarefaConcluida = tarefa.querySelector('.valor-tarefa').classList.contains('completed');
-        todasTarefas.push({ texto_tarefa: textoTarefa, tarefa_feita: tarefaConcluida });
+        allProducts.push({ texto_tarefa: textoTarefa, tarefa_feita: tarefaConcluida });
     });
 
-    localStorage.setItem('lista-tarefas', JSON.stringify(todasTarefas));
+    localStorage.setItem('lista-tarefas', JSON.stringify(allProducts));
 }
 
 //carrefao local storage
@@ -337,12 +336,12 @@ function carregaTarefasLocal() {
     textCountProducts.textContent = countProducts;
     textTotalProducts.textContent = countTotal;
 
-    const tarefasEmStorage = localStorage.getItem('lista-tarefas');
+    const productsEmStorage = localStorage.getItem('lista-tarefas');
 
-    if (tarefasEmStorage) {
-        const tarefas = JSON.parse(tarefasEmStorage);
+    if (productsEmStorage) {
+        const products = JSON.parse(productsEmStorage);
 
-        tarefas.forEach(item => {
+        products.forEach(item => {
             let div = document.createElement('div');
             div.setAttribute('class', 'produto');
 
@@ -350,7 +349,7 @@ function carregaTarefasLocal() {
             var tarefaCompleta = item.tarefa_feita ? 'completed' : '';
 
             div.innerHTML = `
-            <input type="checkbox" class="verifica-tarefa" ${tarefaCheck} onclick="verificaEstado(this)" />
+            <input type="checkbox" class="check-product" ${tarefaCheck} onclick="verificaEstado(this)" />
             <span class="valor-tarefa ${tarefaCompleta}">${item.texto_tarefa}</span>
             <button class="editar" onclick="editarTarefa(this)">
                 <i class='bx bx-pencil'></i>
