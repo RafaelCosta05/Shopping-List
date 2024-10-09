@@ -200,7 +200,7 @@ function deleteAll() {
         produtosRemovidos++;
 
         // Remove o produto da lista
-        listProducts.removeChild(tarefa);
+        listProducts.removeChild(product);
     });
 
     // Atualiza o total de produtos
